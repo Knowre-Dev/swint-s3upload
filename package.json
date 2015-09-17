@@ -1,0 +1,33 @@
+{
+  "name": "swint-s3upload",
+  "version": "0.1.0",
+  "description": "S3 uploader wrapper for Swint",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "eslint lib && mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KnowRe/swint-s3upload.git"
+  },
+  "keywords": [
+    "swint",
+    "s3",
+    "upload"
+  ],
+  "author": "Kurt Cho <kivoloid@gmail.com>",
+  "contributors": [],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KnowRe/swint-s3upload/issues"
+  },
+  "homepage": "https://github.com/KnowRe/swint-s3upload",
+  "dependencies": {
+    "s3": "^4.4.0",
+    "swint-helper": "^0.1.7"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "eslint": "*"
+  }
+}

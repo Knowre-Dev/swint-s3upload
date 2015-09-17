@@ -1,0 +1,22 @@
+#Intro {
+	position: relative;
+}
+.component1 {
+	background-image: url('img/component1.png');
+	background-position: -42px 0;
+	width: 100px;
+	height: 100px;
+}
+
+
+.component2 {
+	background-image: url('img/component2.png');
+	background-position: -88px 0;
+	width: 150px;
+	height: 130px;
+}
+
+
+#Outro {
+	height: 30px;
+}
