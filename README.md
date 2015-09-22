@@ -1,5 +1,5 @@
 # swint-s3upload
-S3 uploader wrapper for Swint
+AWS S3 uploader for Swint batch task manager(swint-task)
 
 **Warning: This is not the final draft yet, so do not use this until its official version is launched**
 
