@@ -8,6 +8,16 @@ AWS S3 uploader for Swint batch task manager(swint-task)
 $ npm install --save swint-s3upload
 ```
 
+## Testing
+You may save your secret credentials for the test at `$HOME/.swint/swint-s3upload-test.json` in the format below:
+```json
+{
+	"id": "ADJFNAIAMYAWSID",
+	"secret": "DEJNARGMKAJENVADMMYAWSSECRET",
+	"bucket": "swint-secret"
+}
+```
+
 ## Options
 * `inDir` : `String`, default: `path.join(path.dirname(require.main.filename), '../out')`
 * `outDir` : `String`, default: `''`
