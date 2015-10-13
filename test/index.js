@@ -5,6 +5,8 @@ var s3 = require('s3'),
 	assert = require('assert'),
 	swintS3Upload = require('../lib');
 
+global.swintVar.printLevel = 5;
+
 describe('secret', function() {
 	this.timeout(10000);
 	
