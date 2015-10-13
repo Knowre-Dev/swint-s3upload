@@ -102,8 +102,11 @@ describe('secret', function() {
 				}
 			};
 
-		if(fs.statSync(path.join(os.tmpDir(), 'swint-s3upload-download/.DS_Store'))) {
+		try {
+			fs.accessSync(path.join(os.tmpDir(), 'swint-s3upload-download/.DS_Store'));
 			fs.unlinkSync(path.join(os.tmpDir(), 'swint-s3upload-download/.DS_Store'));
+		} catch(e) {
+			;
 		}
 		fs.unlinkSync(path.join(os.tmpDir(), 'swint-s3upload-download/common.js'));
 		fs.unlinkSync(path.join(os.tmpDir(), 'swint-s3upload-download/common.css'));
