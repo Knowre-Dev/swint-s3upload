@@ -8,7 +8,7 @@ var s3 = require('s3'),
 global.swintVar.printLevel = 5;
 
 describe('secret', function() {
-	this.timeout(10000);
+	this.timeout(20000);
 	
 	it('Error when no callback', function() {
 		assert.throws(function() {
@@ -27,8 +27,20 @@ describe('secret', function() {
 
 	it('Simple case', function(done) {
 		var credPath = path.join(process.env.HOME, '.swint', 'swint-s3upload-test.json'),
-			cred = JSON.parse(fs.readFileSync(credPath)),
-			client = s3.createClient({
+			cred;
+
+		try {
+			fs.accessSync(credPath);
+			cred = JSON.parse(fs.readFileSync(credPath));
+		} catch(e) {
+			cred = {
+				id: process.env.SWINT_S3UPLOAD_TEST_ID,
+				secret: process.env.SWINT_S3UPLOAD_TEST_SECRET,
+				bucket: process.env.SWINT_S3UPLOAD_TEST_BUCKET
+			};
+		}
+
+		var	client = s3.createClient({
 				s3Options: {
 					accessKeyId: cred.id,
 					secretAccessKey: cred.secret
@@ -88,8 +100,20 @@ describe('secret', function() {
 
 	after(function(done) {
 		var credPath = path.join(process.env.HOME, '.swint', 'swint-s3upload-test.json'),
-			cred = JSON.parse(fs.readFileSync(credPath)),
-			client = s3.createClient({
+			cred;
+
+		try {
+			fs.accessSync(credPath);
+			cred = JSON.parse(fs.readFileSync(credPath));
+		} catch(e) {
+			cred = {
+				id: process.env.SWINT_S3UPLOAD_TEST_ID,
+				secret: process.env.SWINT_S3UPLOAD_TEST_SECRET,
+				bucket: process.env.SWINT_S3UPLOAD_TEST_BUCKET
+			};
+		}
+
+		var client = s3.createClient({
 				s3Options: {
 					accessKeyId: cred.id,
 					secretAccessKey: cred.secret
