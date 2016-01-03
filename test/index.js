@@ -9,7 +9,8 @@ global.swintVar.printLevel = 5;
 
 describe('secret', function() {
 	this.timeout(20000);
-	
+	var randKey = String(Math.floor(Math.random() * 10000000));
+
 	it('Error when no callback', function() {
 		assert.throws(function() {
 			swintS3Upload({});
@@ -50,12 +51,12 @@ describe('secret', function() {
 				localDir: path.join(os.tmpDir(), 'swint-s3upload-download'),
 				s3Params: {
 					Bucket: cred.bucket,
-					Prefix: ''
+					Prefix: randKey
 				}
 			},
 			ss = swintS3Upload({
 				inDir: path.join(__dirname, '../test_case'),
-				outDir: '',
+				outDir: randKey,
 				s3Info: {
 					key: cred.key,
 					secret: cred.secret,
@@ -124,7 +125,7 @@ describe('secret', function() {
 				deleteRemoved: true,
 				s3Params: {
 					Bucket: cred.bucket,
-					Prefix: ''
+					Prefix: randKey
 				}
 			};
 
