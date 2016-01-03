@@ -5,7 +5,7 @@ var s3 = require('s3'),
 	assert = require('assert'),
 	swintS3Upload = require('../lib');
 
-// global.swintVar.printLevel = 5;
+global.swintVar.printLevel = 5;
 
 describe('secret', function() {
 	this.timeout(20000);
@@ -73,27 +73,30 @@ describe('secret', function() {
 				});
 
 				downloader.on('end', function() {
-					assert.deepEqual(
-						fs.readFileSync(path.join(__dirname, '../test_case/common.js')),
-						fs.readFileSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'common.js'))
-					);
 
-					assert.deepEqual(
-						fs.readFileSync(path.join(__dirname, '../test_case/common.css')),
-						fs.readFileSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'common.css'))
-					);
+					setTimeout(function() {
+						assert.deepEqual(
+							fs.readFileSync(path.join(__dirname, '../test_case/common.js')),
+							fs.readFileSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'common.js'))
+						);
 
-					assert.deepEqual(
-						fs.readFileSync(path.join(__dirname, '../test_case/img/flags.png')),
-						fs.readFileSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'img/flags.png'))
-					);
+						assert.deepEqual(
+							fs.readFileSync(path.join(__dirname, '../test_case/common.css')),
+							fs.readFileSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'common.css'))
+						);
 
-					assert.deepEqual(
-						fs.readFileSync(path.join(__dirname, '../test_case/img/tech.svg')),
-						fs.readFileSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'img/tech.svg'))
-					);
+						assert.deepEqual(
+							fs.readFileSync(path.join(__dirname, '../test_case/img/flags.png')),
+							fs.readFileSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'img/flags.png'))
+						);
 
-					done();
+						assert.deepEqual(
+							fs.readFileSync(path.join(__dirname, '../test_case/img/tech.svg')),
+							fs.readFileSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'img/tech.svg'))
+						);
+						
+						done();
+					}, 2000);
 				});
 			});
 	});
