@@ -8,7 +8,7 @@ var s3 = require('s3'),
 global.swintVar.printLevel = 5;
 
 describe('secret', function() {
-	this.timeout(20000);
+	this.timeout(200000);
 	var randKey = String(Math.floor(Math.random() * 10000000));
 
 	it('Error when no callback', function() {
@@ -63,18 +63,17 @@ describe('secret', function() {
 					bucket: cred.bucket
 				}
 			}, function(err, res) {
-				fs.mkdirSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey));
+				setTimeout(function() {
+					fs.mkdirSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey));
 
-				var downloader = client.downloadDir(params);
+					var downloader = client.downloadDir(params);
 
-				downloader.on('error', function(err) {
-					print(4, err);
-					process.exit(-1);
-				});
+					downloader.on('error', function(err) {
+						print(4, err);
+						process.exit(-1);
+					});
 
-				downloader.on('end', function() {
-
-					setTimeout(function() {
+					downloader.on('end', function() {
 						assert.deepEqual(
 							fs.readFileSync(path.join(__dirname, '../test_case/common.js')),
 							fs.readFileSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'common.js'))
@@ -94,10 +93,10 @@ describe('secret', function() {
 							fs.readFileSync(path.join(__dirname, '../test_case/img/tech.svg')),
 							fs.readFileSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'img/tech.svg'))
 						);
-						
+
 						done();
-					}, 2000);
-				});
+					});
+				}, Math.random() * 60000);
 			});
 	});
 
