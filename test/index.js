@@ -95,7 +95,6 @@ describe('secret', function() {
 
 					done();
 				});
-
 			});
 	});
 
@@ -153,7 +152,20 @@ describe('secret', function() {
 
 		uploader.on('end', function() {
 			fs.rmdirSync(path.join(os.tmpDir(), 'swint-s3upload-empty'));
-			done();
+
+			var deleter = client.deleteDir({
+				Bucket: cred.bucket,
+				Prefix: randKey
+			});
+
+			deleter.on('error', function(err) {
+				print(4, err);
+				process.exit(-1);
+			});
+
+			deleter.on('end', function() {
+				done();
+			});
 		});
 	});
 });
