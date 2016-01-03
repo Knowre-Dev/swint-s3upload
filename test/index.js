@@ -51,7 +51,7 @@ describe('secret', function() {
 				localDir: path.join(os.tmpDir(), 'swint-s3upload-download' + randKey),
 				s3Params: {
 					Bucket: cred.bucket,
-					Prefix: randKey
+					Prefix: randKey + '/'
 				}
 			},
 			ss = swintS3Upload({
