@@ -120,7 +120,7 @@ describe('secret', function() {
 				}
 			}),
 			params = {
-				localDir: path.join(os.tmpDir(), 'swint-s3upload-empty'),
+				localDir: path.join(os.tmpDir(), 'swint-s3upload-empty' + randKey),
 				deleteRemoved: true,
 				s3Params: {
 					Bucket: cred.bucket,
