@@ -5,7 +5,7 @@ var s3 = require('s3'),
 	assert = require('assert'),
 	swintS3Upload = require('../lib');
 
-global.swintVar.printLevel = 5;
+// global.swintVar.printLevel = 5;
 
 describe('secret', function() {
 	this.timeout(20000);
@@ -124,7 +124,7 @@ describe('secret', function() {
 				deleteRemoved: true,
 				s3Params: {
 					Bucket: cred.bucket,
-					Prefix: randKey
+					Prefix: randKey + '/'
 				}
 			};
 
@@ -155,7 +155,7 @@ describe('secret', function() {
 
 			var deleter = client.deleteDir({
 				Bucket: cred.bucket,
-				Prefix: randKey
+				Prefix: randKey + '/'
 			});
 
 			deleter.on('error', function(err) {
