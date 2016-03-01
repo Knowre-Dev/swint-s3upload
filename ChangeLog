@@ -1,3 +1,6 @@
+2016.03.01, Version 1.0.2
+ * Fix: Changed dependency from s3 to aws-sdk
+
 2016.03.01, Version 1.0.1
  * Upgrade: Upgraded dependencies
 
