@@ -1,3 +1,6 @@
+2016.07.01, Version 1.0.7
+ * Fix: Applied global replacement for path separator
+
 2016.06.06, Version 1.0.6
  * Upgrade: Upgraded dependencies
 
