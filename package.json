@@ -1,6 +1,6 @@
 {
   "name": "swint-s3upload",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "AWS S3 uploader for Swint batch task manager(swint-task)",
   "main": "lib/index.js",
   "scripts": {
