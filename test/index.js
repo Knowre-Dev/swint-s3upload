@@ -41,11 +41,16 @@ describe('secret', function() {
 			};
 		}
 
+		var s3Options = { accessKeyId: cred.key, secretAccessKey: cred.secret },
+			s3Info    = { key: cred.key, secret: cred.secret, bucket: cred.bucket };
+
+		if( cred.hasOwnProperty('region') ) {
+			s3Options.region = cred.region;
+			s3Info.region = cred.region;
+		}
+
 		var	client = s3.createClient({
-				s3Options: {
-					accessKeyId: cred.key,
-					secretAccessKey: cred.secret
-				}
+				s3Options: s3Options
 			}),
 			params = {
 				localDir: path.join(os.tmpDir(), 'swint-s3upload-download' + randKey),
@@ -57,11 +62,7 @@ describe('secret', function() {
 			ss = swintS3Upload({
 				inDir: path.join(__dirname, '../test_case'),
 				outDir: randKey,
-				s3Info: {
-					key: cred.key,
-					secret: cred.secret,
-					bucket: cred.bucket
-				}
+				s3Info: s3Info
 			}, function(err, res) {
 				setTimeout(function() {
 					fs.mkdirSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey));
@@ -115,11 +116,16 @@ describe('secret', function() {
 			};
 		}
 
+		var s3Options = { accessKeyId: cred.key, secretAccessKey: cred.secret },
+			s3Info    = { key: cred.key, secret: cred.secret, bucket: cred.bucket };
+
+		if ( cred.hasOwnProperty('region') ) {
+			s3Options.region = cred.region;
+			s3Info.region = cred.region;
+		}
+
 		var client = s3.createClient({
-				s3Options: {
-					accessKeyId: cred.key,
-					secretAccessKey: cred.secret
-				}
+				s3Options: s3Options
 			}),
 			params = {
 				localDir: path.join(os.tmpDir(), 'swint-s3upload-empty' + randKey),
