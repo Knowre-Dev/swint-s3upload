@@ -1,3 +1,6 @@
+2016.12.27, Version 1.1.2
+ * Fix: Added retry & timeout
+
 2016.11.24, Version 1.1.1
  * Fix: Supporting option for China region
 
