@@ -53,7 +53,7 @@ describe('secret', function() {
 				s3Options: s3Options
 			}),
 			params = {
-				localDir: path.join(os.tmpDir(), 'swint-s3upload-download' + randKey),
+				localDir: path.join(os.tmpdir(), 'swint-s3upload-download' + randKey),
 				s3Params: {
 					Bucket: cred.bucket,
 					Prefix: randKey + '/'
@@ -65,7 +65,7 @@ describe('secret', function() {
 				s3Info: s3Info
 			}, function(err, res) {
 				setTimeout(function() {
-					fs.mkdirSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey));
+					fs.mkdirSync(path.join(os.tmpdir(), 'swint-s3upload-download' + randKey));
 
 					var downloader = client.downloadDir(params);
 
@@ -77,22 +77,22 @@ describe('secret', function() {
 					downloader.on('end', function() {
 						assert.deepEqual(
 							fs.readFileSync(path.join(__dirname, '../test_case/common.js')),
-							fs.readFileSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'common.js'))
+							fs.readFileSync(path.join(os.tmpdir(), 'swint-s3upload-download' + randKey, 'common.js'))
 						);
 
 						assert.deepEqual(
 							fs.readFileSync(path.join(__dirname, '../test_case/common.css')),
-							fs.readFileSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'common.css'))
+							fs.readFileSync(path.join(os.tmpdir(), 'swint-s3upload-download' + randKey, 'common.css'))
 						);
 
 						assert.deepEqual(
 							fs.readFileSync(path.join(__dirname, '../test_case/img/flags.png')),
-							fs.readFileSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'img/flags.png'))
+							fs.readFileSync(path.join(os.tmpdir(), 'swint-s3upload-download' + randKey, 'img/flags.png'))
 						);
 
 						assert.deepEqual(
 							fs.readFileSync(path.join(__dirname, '../test_case/img/tech.svg')),
-							fs.readFileSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'img/tech.svg'))
+							fs.readFileSync(path.join(os.tmpdir(), 'swint-s3upload-download' + randKey, 'img/tech.svg'))
 						);
 
 						done();
@@ -128,7 +128,7 @@ describe('secret', function() {
 				s3Options: s3Options
 			}),
 			params = {
-				localDir: path.join(os.tmpDir(), 'swint-s3upload-empty' + randKey),
+				localDir: path.join(os.tmpdir(), 'swint-s3upload-empty' + randKey),
 				deleteRemoved: true,
 				s3Params: {
 					Bucket: cred.bucket,
@@ -137,19 +137,19 @@ describe('secret', function() {
 			};
 
 		try {
-			fs.accessSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, '.DS_Store'));
-			fs.unlinkSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, '.DS_Store'));
+			fs.accessSync(path.join(os.tmpdir(), 'swint-s3upload-download' + randKey, '.DS_Store'));
+			fs.unlinkSync(path.join(os.tmpdir(), 'swint-s3upload-download' + randKey, '.DS_Store'));
 		} catch(e) {
 			;
 		}
-		fs.unlinkSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'common.js'));
-		fs.unlinkSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'common.css'));
-		fs.unlinkSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'img/flags.png'));
-		fs.unlinkSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'img/tech.svg'));
-		fs.rmdirSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey, 'img'));
-		fs.rmdirSync(path.join(os.tmpDir(), 'swint-s3upload-download' + randKey));
+		fs.unlinkSync(path.join(os.tmpdir(), 'swint-s3upload-download' + randKey, 'common.js'));
+		fs.unlinkSync(path.join(os.tmpdir(), 'swint-s3upload-download' + randKey, 'common.css'));
+		fs.unlinkSync(path.join(os.tmpdir(), 'swint-s3upload-download' + randKey, 'img/flags.png'));
+		fs.unlinkSync(path.join(os.tmpdir(), 'swint-s3upload-download' + randKey, 'img/tech.svg'));
+		fs.rmdirSync(path.join(os.tmpdir(), 'swint-s3upload-download' + randKey, 'img'));
+		fs.rmdirSync(path.join(os.tmpdir(), 'swint-s3upload-download' + randKey));
 
-		fs.mkdirSync(path.join(os.tmpDir(), 'swint-s3upload-empty' + randKey));
+		fs.mkdirSync(path.join(os.tmpdir(), 'swint-s3upload-empty' + randKey));
 
 		var uploader = client.uploadDir(params);
 
@@ -159,7 +159,7 @@ describe('secret', function() {
 		});
 
 		uploader.on('end', function() {
-			fs.rmdirSync(path.join(os.tmpDir(), 'swint-s3upload-empty' + randKey));
+			fs.rmdirSync(path.join(os.tmpdir(), 'swint-s3upload-empty' + randKey));
 
 			var deleter = client.deleteDir({
 				Bucket: cred.bucket,
