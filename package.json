@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/KnowRe-Dev/swint-s3upload",
   "dependencies": {
-    "async": "2.5.0",
+    "async": "2.6.0",
     "aws-sdk": "2.117.0",
     "swint-helper": "1.2.7"
   },
