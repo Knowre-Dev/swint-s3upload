@@ -4,7 +4,7 @@
   "description": "AWS S3 uploader for Swint batch task manager(swint-task)",
   "main": "lib/index.js",
   "scripts": {
-    "test": "eslint lib && mocha"
+    "test": "eslint lib && mocha --exit"
   },
   "repository": {
     "type": "git",
