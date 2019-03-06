@@ -64,6 +64,10 @@ describe('secret', function() {
 				outDir: randKey,
 				s3Info: s3Info
 			}, function(err, res) {
+				if (err) {
+					assert.fail(err);
+					return;
+				}
 				setTimeout(function() {
 					fs.mkdirSync(path.join(os.tmpdir(), 'swint-s3upload-download' + randKey));
 
