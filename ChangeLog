@@ -1,3 +1,10 @@
+2019.03.06, Version 1.1.11
+ * Update : travis deploy secure-key
+ * Fix: update error handling
+ * Fix: node_js type on .travis.yml
+ * Upgrade: Upgraded node version & dependencies
+ * Build: update travis env secure key
+
 2017.12.06, Version 1.1.10
  * Upgrade: Upgraded node version & dependencies
  * Fix: add --exit option to npm test command
